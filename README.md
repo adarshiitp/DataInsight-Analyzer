@@ -82,7 +82,7 @@ DataInsight_Analyzer/
 ├── README.md
 ├── .gitignore
 └── sample_data/
-    └── messy_ecommerce_customer_120k.csv
+    └── student_performance_dataset.csv
 ```
 
 ## ⚠️ Notes and Limitations
