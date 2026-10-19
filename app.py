@@ -117,8 +117,7 @@ st.caption(
 uploaded_file = st.file_uploader(
     "Upload a CSV or Excel file",
     type=["csv", "xlsx"],
-    help="Supported formats: .csv and .xlsx",
-    max_upload_size=30,
+    help="Supported formats: .csv and .xlsx"
 )
 
 if uploaded_file is None:
