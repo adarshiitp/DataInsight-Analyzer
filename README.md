@@ -1,11 +1,10 @@
 # 📊 DataInsight Analyzer
 
-A Python and Streamlit application that helps you **clean, analyze, and visualize datasets** with ease. Upload a CSV or Excel file to explore data quality, discover patterns, generate insights, and download reports.
+A Python and Streamlit application that helps you clean, analyze, and visualize datasets with ease. Upload a CSV or Excel file to explore data quality, discover patterns, generate insights, and download reports.
 
 ## 🚀 Live Demo
 
-🔗 **Live Project:** [Add your deployed app URL here](YOUR_STREAMLIT_APP_URL)
-
+🔗 **Live Project:** https://datainsight-analyzer.streamlit.app
 
 ## ✨ Features
 
@@ -83,7 +82,7 @@ DataInsight_Analyzer/
 ├── README.md
 ├── .gitignore
 └── sample_data/
-    └── sample_sales.csv
+    └── messy_ecommerce_customer_120k.csv
 ```
 
 ## ⚠️ Notes and Limitations
@@ -100,7 +99,7 @@ DataInsight_Analyzer/
 **Adarsh**
 
 - [GitHub Profile](https://github.com/adarshhitp)
-- [Live Project](#idhar dal de dena bhai)
+- [Live Project](https://datainsight-analyzer.streamlit.app/)
 
 ---
 
