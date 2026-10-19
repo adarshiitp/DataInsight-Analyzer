@@ -24,9 +24,9 @@ from report_generator import (
 )
 
 
-# ---------------------------------------------------------
-# DATA LOADING AND CACHING
-# ---------------------------------------------------------
+
+# Data loading and caching
+
 
 @st.cache_data(show_spinner=False, max_entries=3)
 def load_and_clean_file(file_bytes, filename):
@@ -51,9 +51,9 @@ def load_and_clean_file(file_bytes, filename):
     return raw_df, cleaned_df, cleaning_info
 
 
-# ---------------------------------------------------------
-# PAGE SETTINGS
-# ---------------------------------------------------------
+
+# Page settings
+
 
 st.set_page_config(
     page_title="DataInsight Analyzer",
@@ -103,9 +103,9 @@ st.markdown(
 )
 
 
-# ---------------------------------------------------------
-# HEADER AND FILE UPLOAD
-# ---------------------------------------------------------
+
+# Header and file upload
+
 
 st.title("DataInsight Analyzer")
 
@@ -128,9 +128,7 @@ if uploaded_file is None:
     st.stop()
 
 
-# ---------------------------------------------------------
-# LOAD AND CLEAN DATA
-# ---------------------------------------------------------
+# Load and clean data
 
 try:
     file_bytes = uploaded_file.getvalue()
@@ -156,9 +154,7 @@ if raw_df.empty or len(raw_df.columns) == 0:
     st.stop()
 
 
-# ---------------------------------------------------------
-# COLUMN INFORMATION AND DATASET SUMMARY
-# ---------------------------------------------------------
+# Column information and dataset summary
 
 column_groups = get_column_groups(cleaned_df)
 
@@ -173,10 +169,7 @@ summary = get_dataset_summary(
     cleaning_info,
 )
 
-
-# ---------------------------------------------------------
-# DATASET OVERVIEW
-# ---------------------------------------------------------
+# Dataset overview
 
 st.subheader("Dataset Overview")
 
@@ -212,9 +205,7 @@ metric_columns[3].metric(
 )
 
 
-# ---------------------------------------------------------
-# DATA CLEANING DETAILS
-# ---------------------------------------------------------
+# Data cleaning details
 
 st.subheader("Data Cleaning")
 
@@ -236,9 +227,7 @@ else:
     st.info("No common cleaning changes were needed.")
 
 
-# ---------------------------------------------------------
-# DATA HEALTH
-# ---------------------------------------------------------
+# Data Health
 
 st.subheader("Data Health")
 
@@ -269,9 +258,7 @@ else:
     )
 
 
-# ---------------------------------------------------------
-# DETECTED COLUMN TYPES
-# ---------------------------------------------------------
+# Detected column types
 
 with st.expander("View detected column types"):
 
@@ -306,9 +293,7 @@ with st.expander("View detected column types"):
         st.write(", ".join(identifier_columns))
 
 
-# ---------------------------------------------------------
-# CHOOSE DEFAULT COLUMNS
-# ---------------------------------------------------------
+# Choose default columns
 
 default_metric = (
     numeric_columns[0]
@@ -361,9 +346,7 @@ for column in date_columns:
         break
 
 
-# ---------------------------------------------------------
-# KEY INSIGHTS
-# ---------------------------------------------------------
+# Key insights
 
 insights = generate_insights(
     cleaned_df,
@@ -388,9 +371,7 @@ else:
     )
 
 
-# ---------------------------------------------------------
-# VISUAL ANALYSIS
-# ---------------------------------------------------------
+# Visual analysis
 
 st.subheader("Visual Analysis")
 
@@ -541,9 +522,7 @@ else:
             )
 
 
-# ---------------------------------------------------------
-# CORRELATION ANALYSIS
-# ---------------------------------------------------------
+# Correlation analysis
 
 if len(numeric_columns) >= 2:
     st.subheader("Relationships")
@@ -568,9 +547,7 @@ if len(numeric_columns) >= 2:
         plt.close(correlation_figure)
 
 
-# ---------------------------------------------------------
-# CLEANED DATA PREVIEW
-# ---------------------------------------------------------
+# Cleaned data preview
 
 st.subheader("Cleaned Data Preview")
 
@@ -585,9 +562,7 @@ st.dataframe(
 )
 
 
-# ---------------------------------------------------------
-# DOWNLOAD RESULTS
-# ---------------------------------------------------------
+# Download results
 
 st.subheader("Download Results")
 
@@ -675,10 +650,7 @@ with download3:
     )
 
 
-# ---------------------------------------------------------
-# FOOTER
-# ---------------------------------------------------------
-
+# footer
 
 
 st.divider()

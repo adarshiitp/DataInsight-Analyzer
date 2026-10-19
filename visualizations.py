@@ -73,7 +73,7 @@ def create_correlation_chart(df, columns):
         return None
 
     numeric_data = df[columns].apply(pd.to_numeric, errors="coerce")
-    # Constant columns have undefined correlations, so omit them from the plot.
+    # Skip constant columns because their correlations cannot be calculated.
     usable_columns = [
         column for column in numeric_data.columns
         if numeric_data[column].nunique(dropna=True) > 1

@@ -35,7 +35,6 @@ def get_column_groups(df):
 
 
 def get_category_summary(df, category, metric, aggregation="SUM"):
-    """Summarize a numeric metric by category."""
     if category not in df.columns or metric not in df.columns:
         return pd.DataFrame(columns=["Category", "Value", "Share %"])
 
@@ -56,7 +55,7 @@ def get_category_summary(df, category, metric, aggregation="SUM"):
     grouped = grouped.sort_values(ascending=False).head(20)
     result = grouped.rename_axis("Category").reset_index(name="Value")
 
-    # Share is meaningful for SUM and COUNT. A mean is an average, not a share.
+    # Calculate the share for SUM and COUNT, but skip it for MEAN since it shows the average.
     if aggregation in ("SUM", "COUNT"):
         total = float(grouped.sum())
         result["Share %"] = (result["Value"] / total * 100).round(1) if total else 0.0
@@ -80,7 +79,7 @@ def get_dataset_summary(raw_df, cleaned_df, cleaning_info):
 
 
 def generate_insights(df, metric=None, category=None, date_column=None, cleaning_info=None):
-    """Create a small set of plain-language findings from the data."""
+    """Generate insights from the dataset."""
     insights = []
     cleaning_info = cleaning_info or {}
 
@@ -115,7 +114,7 @@ def generate_insights(df, metric=None, category=None, date_column=None, cleaning
         trend[metric] = pd.to_numeric(trend[metric], errors="coerce")
         trend = trend.dropna().sort_values(date_column)
         if len(trend) >= 2:
-            # Aggregate by date first so the comparison is not based on row order.
+            # Group data by date before comparing values.
             trend = trend.groupby(date_column, as_index=False)[metric].sum()
             if len(trend) >= 2:
                 first_value = float(trend[metric].iloc[0])

@@ -13,7 +13,7 @@ DATE_NAME_HINTS = (
 
 
 def clean_column_names(df):
-    """Make column names consistent and unique."""
+    """Clean up column names and handle duplicates."""
     cleaned = df.copy()
     names = []
     seen = {}
@@ -41,7 +41,7 @@ def clean_column_names(df):
 
 
 def clean_text_values(df):
-    """Trim text and convert common text placeholders to missing values."""
+    """Clean up text values and replace common placeholders with missing values."""
     cleaned = df.copy()
     text_columns = cleaned.select_dtypes(include=["object", "string"]).columns
 
@@ -55,7 +55,7 @@ def clean_text_values(df):
 
 
 def detect_date_columns(df):
-    """Detect date columns only when the name and values both look date-like."""
+    """Find date columns using their names and values."""
     date_columns = []
 
     for column in df.columns:
@@ -91,7 +91,7 @@ def detect_date_columns(df):
 
 
 def convert_numeric_like_columns(df, date_columns):
-    """Convert text columns to numbers when almost all non-missing values are numeric."""
+    """Convert text columns to numeric when most values are numbers."""
     cleaned = df.copy()
     converted_columns = []
 
@@ -118,7 +118,7 @@ def convert_numeric_like_columns(df, date_columns):
 
 
 def detect_identifier_columns(df):
-    """Find likely ID/code fields so they are not treated as measurements."""
+    """Identify ID and code columns that should not be treated as measurements."""
     patterns = (
         r"^id$", r".*_id$", r"^id_.*", r".*uuid.*",
         r".*identifier.*", r".*roll[_-]?no.*",
@@ -138,7 +138,7 @@ def detect_identifier_columns(df):
 
 
 def fill_missing_values(df, numeric_columns, categorical_columns):
-    """Fill numeric gaps with the median and text gaps with the most common value."""
+    """Fill missing numeric values with the median and text values with the most common value."""
     cleaned = df.copy()
     filled_numeric = {}
     filled_categorical = {}
@@ -167,7 +167,7 @@ def fill_missing_values(df, numeric_columns, categorical_columns):
 
 
 def clean_dataset(raw_df):
-    """Run the cleaning steps and return the cleaned data plus a change log."""
+    """Clean the dataset and return the updated data with a log of changes."""
     original_rows = len(raw_df)
     cleaned = clean_column_names(raw_df)
     cleaned = clean_text_values(cleaned)

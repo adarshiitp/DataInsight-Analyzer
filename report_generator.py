@@ -13,13 +13,13 @@ def _format_dates_for_export(df, date_columns):
 
 
 def create_csv_download(df, date_columns):
-    """Return CSV bytes suitable for Streamlit's download button."""
+    """Prepare the data for download as a CSV file."""
     export_df = _format_dates_for_export(df, date_columns)
     return export_df.to_csv(index=False).encode("utf-8-sig")
 
 
 def create_excel_download(df, summary, insights, column_groups):
-    """Build an Excel workbook in memory; return None if Excel support is missing."""
+    """Create an Excel workbook for download, or return None if Excel support is unavailable."""
     try:
         buffer = BytesIO()
         summary_rows = [
@@ -61,7 +61,7 @@ def create_excel_download(df, summary, insights, column_groups):
 
 
 def create_text_report(filename, summary, cleaning_info, column_groups, insights):
-    """Create a readable plain-text summary of the analysis."""
+    """Create a text report with the analysis results."""
     lines = [
         "DataInsight Analyzer",
         "=" * 24,
