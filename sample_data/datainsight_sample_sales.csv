@@ -1,0 +1,16 @@
+Date,Product,Category,City,Quantity,Sales,Profit,Customer_Rating
+2026-01-05,Laptop,Electronics,Delhi,2,120000,18000.0,4.5
+2026-01-12,Mobile,Electronics,Mumbai,5,75000,12000.0,4.2
+2026-01-19,Laptop,Electronics,Delhi,3,180000,28000.0,4.7
+2026-02-02,Tablet,Electronics,Pune,4,80000,11000.0,4.1
+2026-02-10,Mobile,Electronics,Bengaluru,6,90000,14000.0,
+2026-02-18,Laptop,Electronics,Mumbai,2,125000,19000.0,4.6
+2026-03-01,Headphones,Accessories,Delhi,8,36000,6500.0,4.0
+2026-03-12,Mobile,Electronics,Pune,5,78000,12500.0,4.3
+2026-03-20,Tablet,Electronics,Mumbai,3,65000,9000.0,4.2
+2026-04-02,Laptop,Electronics,Bengaluru,2,135000,22000.0,4.8
+2026-04-15,Mobile,Electronics,,7,98000,15500.0,4.5
+2026-04-25,Headphones,Accessories,Pune,9,40500,7200.0,4.1
+2026-05-05,Laptop,Electronics,Mumbai,4,210000,,4.9
+2026-05-18,Tablet,Electronics,Delhi,5,105000,16500.0,4.4
+2026-06-01,Mobile,Electronics,Bengaluru,6,92000,14500.0,4.6
